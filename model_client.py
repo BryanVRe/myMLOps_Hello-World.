@@ -11,6 +11,7 @@ def make_prediction(hours_worked):
     try:
         response = requests.post(SERVER_URL, json=payload)
         response.raise_for_status()
+
         prediction = response.json()
         return prediction['predictions'][0][0]
     except requests.exceptions.HTTPError as errh:
