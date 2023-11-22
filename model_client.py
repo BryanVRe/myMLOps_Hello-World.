@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import json
 
 SERVER_URL = 'https://linear-model-service-bryanvre.cloud.okteto.net/v1/models/linear-model:predict'
 
@@ -20,7 +21,7 @@ def calculate_deficiency(hours_worked):
 def main():
     st.title('Calculadora de Deficiencia del Programador')
 
-    hours_worked = st.number_input('Ingrese el número de horas trabajadas:', min_value=0.0, step=1.0)
+    hours_worked = st.number_input('Ingrese el número de horas trabajadas de más:', min_value=0.0, step=1.0)
 
     if st.button('Calcular'):
         # Hacer la llamada al servidor externo para predecir la métrica
