@@ -9,8 +9,14 @@ def make_prediction(hours_worked):
     payload = {'instances': [hours_worked]}
     
     try:
+        # Imprime los detalles de la solicitud antes de enviarla
+        st.write(f'Solicitud enviada al servidor: {json.dumps(payload)}')
+        
         response = requests.post(SERVER_URL, json=payload)
         response.raise_for_status()
+
+        # Imprime los detalles de la respuesta del servidor
+        st.write(f'Respuesta del servidor: {response.text}')
 
         prediction = response.json()
         return prediction['predictions'][0][0]
@@ -50,4 +56,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
